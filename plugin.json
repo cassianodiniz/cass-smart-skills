@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cass-smart-skills",
+  "version": "0.1.0",
+  "description": "Skills para entrevista, pesquisa com fontes, slides no Canva e edição de textos.",
+  "author": {
+    "name": "Cassiano Diniz"
+  },
+  "repository": "https://github.com/cassianodiniz/cass-smart-skills",
+  "homepage": "https://github.com/cassianodiniz/cass-smart-skills",
+  "keywords": [
+    "skills",
+    "research",
+    "canva",
+    "writing"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Cass Smart Skills",
+        "shortDescription": "Pesquisa, slides e escrita",
+        "longDescription": "Quatro skills para alinhar pedidos, pesquisar com fontes, preparar slides no Canva e editar textos.",
+        "developerName": "Cassiano Diniz",
+        "category": "Productivity",
+        "defaultPrompt": "Use as skills do Cass Smart Skills para me ajudar com esta tarefa."
+      }
+    }
+  }
+}

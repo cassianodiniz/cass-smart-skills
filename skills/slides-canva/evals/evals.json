@@ -1,0 +1,23 @@
+{
+  "skill_name": "slides-canva",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Trouxe um texto do OpenEvidence sobre avaliação de comportamento alimentar. Transforme cada componente em um slide para pós-graduação, sem pesquisar e sem inserir ainda no Canva.",
+      "expected_output": "Rascunho slide a slide, linguagem didática, sem pesquisa, sem travessão, sem perguntas nos títulos e com referências no formato pessoal do usuário.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Aprovado. Preencha a cópia do modelo no Canva com o conteúdo que acabamos de revisar e abra no Chrome quando terminar.",
+      "expected_output": "Uma única aprovação cobre edição e commit; o agente verifica o documento persistido, confirma ausência de placeholders e abre o link final no Chrome.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Quero duas imagens sobre os circuitos da bulimia usando os personagens que já definimos. Faça o processo visual comigo.",
+      "expected_output": "Entrevista com uma pergunta por vez, plano das duas imagens e duas legendas antes da geração, sem pesquisa, sem texto nas imagens e preservação dos personagens.",
+      "files": []
+    }
+  ]
+}

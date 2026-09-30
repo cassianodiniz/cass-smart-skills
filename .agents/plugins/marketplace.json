@@ -1,0 +1,20 @@
+{
+  "name": "cass-smart-skills",
+  "interface": {
+    "displayName": "Cass Smart Skills"
+  },
+  "plugins": [
+    {
+      "name": "cass-smart-skills",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

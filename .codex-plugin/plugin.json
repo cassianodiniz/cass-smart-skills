@@ -1,0 +1,17 @@
+{
+  "name": "cass-smart-skills",
+  "version": "0.1.0",
+  "description": "Skills para entrevista, pesquisa com fontes, slides no Canva e edição de textos.",
+  "author": {
+    "name": "Cassiano Diniz"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Cass Smart Skills",
+    "shortDescription": "Pesquisa, slides e escrita",
+    "longDescription": "Quatro skills para alinhar pedidos, pesquisar com fontes, preparar slides no Canva e editar textos.",
+    "developerName": "Cassiano Diniz",
+    "category": "Productivity",
+    "defaultPrompt": "Use as skills do Cass Smart Skills para me ajudar com esta tarefa."
+  }
+}
