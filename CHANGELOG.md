@@ -1,5 +1,9 @@
 # Alterações
 
+## 0.3.0
+
+- Removida a skill no-ai-slop.
+
 ## 0.2.0
 
 - Nova skill motion-designer: motion graphics explicativo com HyperFrames, guia de estilo com dois exemplos aprovados, referências de fisiologia, ritmo de até 2,5 s, anotação com folga e tela de app copiada do print fornecido pelo usuário.
