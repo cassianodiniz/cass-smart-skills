@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=__W__, height=__H__">
+<script src="gsap/gsap.min.js"></script>
+<!-- plugins disponíveis (carregar só os usados): SplitText, DrawSVGPlugin, MotionPathPlugin, CustomEase, MorphSVGPlugin -->
+<style>
+  @font-face { font-family:"Inter"; font-weight:400; src:url("fontes/inter-400.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"Inter"; font-weight:600; src:url("fontes/inter-600.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"Inter"; font-weight:700; src:url("fontes/inter-700.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"Inter"; font-weight:800; src:url("fontes/inter-800.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"Montserrat"; font-weight:500; src:url("fontes/montserrat-500.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"Montserrat"; font-weight:600; src:url("fontes/montserrat-600.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"Archivo"; font-weight:800; src:url("fontes/archivo-800.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"Archivo"; font-weight:900; src:url("fontes/archivo-900.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"Playfair Display"; font-style:italic; font-weight:500; src:url("fontes/playfair-italic-500.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"Playfair Display"; font-style:italic; font-weight:600; src:url("fontes/playfair-italic-600.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"Playfair Display"; font-style:italic; font-weight:700; src:url("fontes/playfair-italic-700.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"Instrument Serif"; font-weight:400; src:url("fontes/instrument-serif-400.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"Instrument Serif"; font-style:italic; font-weight:400; src:url("fontes/instrument-serif-italic-400.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"Caveat"; font-weight:600; src:url("fontes/caveat-600.woff2") format("woff2"); font-display:block; }
+  @font-face { font-family:"JetBrains Mono"; font-weight:500; src:url("fontes/jetbrains-mono-500.woff2") format("woff2"); font-display:block; }
+
+  :root{
+    /* paleta inicial opcional: adapte à identidade do usuário */
+    --verde:#009348; --verde-esc:#006d37; --verde-claro:#E8F0DE; --linha:#CFE0BC;
+    --tinta:#111511; --papel:#F5F2EA; --coral:#E2603F; --coral-esc:#B9431F; --coral-claro:#FCE3D9;
+    --carvao:#141A16; /* modo escuro: carvão esverdeado, nunca preto puro */
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:__W__px;height:__H__px;overflow:hidden;background:var(--papel);}
+  #root{position:absolute;inset:0;overflow:hidden;}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="__DUR__" data-width="__W__" data-height="__H__" data-fps="30">
+  <!-- cada cena = um .clip com data-start / data-duration / data-track-index -->
+</div>
+<script>
+  window.__timelines = window.__timelines || {};
+  var tl = gsap.timeline({ paused:true });
+  // estados iniciais em t=0 com tl.set(...) (seek-safe), depois as animações
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

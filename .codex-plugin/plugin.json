@@ -1,15 +1,15 @@
 {
   "name": "cass-smart-skills",
-  "version": "0.1.0",
-  "description": "Skills para entrevista, pesquisa com fontes, slides no Canva e edição de textos.",
+  "version": "0.2.0",
+  "description": "Skills para entrevista, pesquisa com fontes, slides no Canva, edição de textos e motion graphics explicativo.",
   "author": {
     "name": "Cassiano Diniz"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "Cass Smart Skills",
-    "shortDescription": "Pesquisa, slides e escrita",
-    "longDescription": "Quatro skills para alinhar pedidos, pesquisar com fontes, preparar slides no Canva e editar textos.",
+    "shortDescription": "Pesquisa, slides, escrita e motion",
+    "longDescription": "Cinco skills para alinhar pedidos, pesquisar com fontes, preparar slides no Canva, editar textos e criar motion graphics que explicam uma fala.",
     "developerName": "Cassiano Diniz",
     "category": "Productivity",
     "defaultPrompt": "Use as skills do Cass Smart Skills para me ajudar com esta tarefa."
