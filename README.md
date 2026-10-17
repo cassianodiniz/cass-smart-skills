@@ -56,6 +56,24 @@ skills/search/pesquisas/
 
 O agente atualiza os índices durante a pesquisa. Execuções com o mesmo tema e data recebem sufixos para preservar resultados anteriores. `pesquisas/` fica fora do Git e dos arquivos gerados por `git archive`. Se a instalação impedir a gravação, a skill informa o problema e não escolhe outro destino. Reinstalar ou limpar o cache do cliente pode remover resultados locais; preserve-os antes dessas operações.
 
+## Motion graphics
+
+A motion-designer cria um vídeo mudo que ilustra o que a pessoa está falando, sem repetir a frase na tela. O padrão é 1080×960, para a metade de cima de um reel em tela dividida; 1080×1920 quando a cena pede tela cheia.
+
+Fluxo:
+
+1. O usuário cola a fala com a duração, ou aponta um vídeo com início e fim (a transcrição local é opcional).
+2. A skill cria a pasta do motion com `node scripts/novo.mjs <pasta> <segundos>`, escreve a animação em HTML + GSAP e confere quadros reduzidos ao tamanho de um celular.
+3. Entrega o HTML para aprovação e só então renderiza o MP4 com `node scripts/render.mjs <pasta>`, que verifica tamanho, duração, ausência de áudio e final parado.
+
+O que vem no pacote:
+
+- `references/estilo.md`: a receita de desenho (a coisa real no centro, câmera que passeia, enquadramentos de até 2,5 s, destaque que entra na palavra falada, anotação a pelo menos 24 px das letras, tela cheia de conteúdo) e dois exemplos aprovados em `references/estilo/`.
+- `assets/fisiologia/`: seis esquemas de anatomia para temas de saúde, como referência de composição, sem validação clínica.
+- Base HTML, GSAP, fontes e um mapa do Brasil por estado.
+
+O que não vem: capturas de telas de aplicativos ou de IA. Quando a cena mostra uma tela, a estrutura segue o print que o próprio usuário fornece; sem print daquele app naquele aparelho, a skill pede um em vez de desenhar de memória. Motion acima de 15 s começa por uma cena-piloto para aprovação.
+
 ## Atualizações
 
 A publicação de novas versões é manual, somente quando solicitada ao mantenedor. Não há automação de sincronização com as skills pessoais. As versões publicadas neste repositório são adaptadas para uso por outras pessoas.
@@ -71,4 +89,4 @@ python3 skills/search/tests/test_contrato.py
 python3 -m unittest discover -s tests -v
 ```
 
-A validação cobre o contrato de fontes e o arquivamento local. Ela não prova execução real de uma pesquisa Exa, edição Canva ou geração de imagens; esses fluxos dependem dos serviços configurados no cliente.
+A validação cobre o contrato de fontes e o arquivamento local. Ela não cobre a motion-designer, que depende de Node, FFmpeg e HyperFrames instalados, nem prova execução real de uma pesquisa Exa, edição Canva ou geração de imagens; esses fluxos dependem dos serviços configurados no cliente.
