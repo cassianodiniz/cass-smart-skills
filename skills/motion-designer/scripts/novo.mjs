@@ -2,6 +2,8 @@ import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { external } from '../../../scripts/runtime_paths.mjs';
+
 const skill = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const [destination, seconds, format, ...extra] = process.argv.slice(2);
 const duration = Number(seconds);
@@ -9,7 +11,7 @@ if (!destination || !Number.isFinite(duration) || duration <= 0 || extra.length 
   console.error('Uso: node scripts/novo.mjs <pasta-nova> <duracao-segundos-positiva> [tela-cheia]');
   process.exit(2);
 }
-const output = path.resolve(destination);
+const output = external(path.resolve(destination));
 if (existsSync(output)) {
   console.error(`A pasta já existe; escolha outra para preservar seus arquivos: ${output}`);
   process.exit(2);

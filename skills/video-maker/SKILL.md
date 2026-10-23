@@ -12,8 +12,9 @@ Google Drive ou Notion do autor. Não inclui mídia dele.
 ## Configurar antes de começar
 
 Leia [references/configuracao.md](references/configuracao.md). Use as pastas e os
-padrões de `.video-maker.json` do projeto. Sem configuração, peça os arquivos e
-proponha pasta local para trabalho e entrega. Os comandos `scripts/` são relativos
+padrões da configuração persistente do plugin. Um `.video-maker.json` do projeto
+explicitamente informado prevalece; não o sobrescreva. Sem configuração, confirme
+as pastas propostas uma vez, como descrito na referência. Os comandos `scripts/` são relativos
 à pasta deste SKILL.md, não ao projeto de vídeo. Use o Python do ambiente isolado
 com `scripts/executar.py <script.py> <argumentos>` quando as ferramentas tiverem
 sido preparadas pelo instalador incluído.
@@ -32,7 +33,7 @@ sobrescrever um caminho de saída: escolha um nome novo antes de executá-los.
 
 1. **Achar os vídeos.** Use os arquivos fornecidos ou a pasta `pastas.entrada` da configuração. Confira cada vídeo com ffprobe e uma folha de contato. Mostre a lista (nome, duração e conteúdo) e confirme quais entram antes de planejar; não use vídeos pessoais por suposição. Observe enquadramento e espelhamento; `--espelhar` em `cortar_trechos.py` só quando necessário.
 
-2. **Transcrever a fala:** `python3 scripts/transcrever.py <fala> <trabalho>/fala.json`. Gera também o `.md` com tempos e não refaz o que já existe.
+2. **Transcrever a fala:** `python3 scripts/transcrever.py <fala> <pastas.transcricoes>/<tema>-<versao>.json`. Gera também o `.md` com tempos; preserve ambas as versões na pasta externa de transcrições. O cache só é reutilizado quando fonte, trecho e processamento coincidem. Use esse caminho no plano e na legenda; não suponha que a transcrição esteja no trabalho.
 3. **Limpar a fala, só se ele pedir.** Pra tirar silêncio, leia [references/silencio.md](references/silencio.md). Pra tirar palavras pelo texto, leia [references/edicao-por-texto.md](references/edicao-por-texto.md). Se a fala for uma gravação bruta, com a mesma frase repetida em várias tentativas, leia [references/gravacao-bruta.md](references/gravacao-bruta.md). Daí em diante, use a transcrição do vídeo limpo.
 4. **Planejar com ele.** Mostre uma tabela com tempo no reel, frase dele e o que aparece em cima. Inclua a última palavra (o corte final), onde entra motion e onde fica tela cheia. Espere o ok. Leia [references/tela-dividida.md](references/tela-dividida.md).
 5. **Ilustrações.** As telas são os outros vídeos que ele gravou. Motion vem da skill `motion-designer`: passe a frase e a duração exata do trecho, e ela sai em 1080×960. Link de TikTok ou Instagram: leia [references/baixar.md](references/baixar.md).

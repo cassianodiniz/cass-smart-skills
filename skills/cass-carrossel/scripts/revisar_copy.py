@@ -255,12 +255,13 @@ COPY:
         resultado = _rodar_gpt(cli, prompt, modo)
     except subprocess.TimeoutExpired:
         motivo = f"GPT passou de {TIMEOUT_S}s"
-    except RevisaoErro as exc:
+    except (RevisaoErro, OSError) as exc:
         motivo = f"GPT falhou: {exc}"
     else:
         return _concluir(atual, estado_path, saida_path, resultado, *REVISOR, "gpt_concluido")
 
     prompt_path = Path(str(saida_path) + ".prompt.md")
+    prompt_path.parent.mkdir(parents=True, exist_ok=True)
     prompt_path.write_text(
         prompt
         + "\nResponda SOMENTE com um objeto JSON (sem texto antes ou depois) que siga este schema:\n"

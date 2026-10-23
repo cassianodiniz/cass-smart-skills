@@ -1,6 +1,6 @@
 # Estrutura card a card
 
-Leia depois da captura e da classificação de domínio, antes de pesquisar a fundo e antes de escrever.
+Leia depois da captura e da classificação de domínio, antes de escrever, usando a pesquisa pertinente já coletada.
 
 ## Por que existe
 
@@ -27,11 +27,11 @@ Um portão único: o mapa carrega o eixo no cabeçalho. Não existe aprovação 
 - A skill **pode propor por conta própria** uma linha de hipótese ("fala pública dela em 2022, a verificar") quando percebe uma lacuna que o Cassiano não pediu. Hipótese aparece no mapa como hipótese e nunca entra na copy como fato sem passar pela pesquisa.
 - Não escreva frases finais de copy nesta etapa. O mapa diz o que o card faz, não como ele fala.
 
-Depois do mapa provisório, pesquise somente os fatos escolhidos para ele (rota do domínio em `perfil-editorial.md`). Se a pesquisa mudar a arquitetura, mostre o mapa final com a alteração destacada.
+Na entrevista, use `pesquisa-e-casos.md` para coletar fontes e, quando escolhido, notícias/pessoas. Depois proponha este esqueleto. Verifique as alegações que forem selecionadas para os cards; se a conferência mudar a arquitetura, destaque a mudança antes da aprovação.
 
 ## Gate
 
-Termine sempre com: "Nenhuma copy foi escrita. Você pode aprovar a estrutura, mover um dado, remover um card ou pedir outra organização."
+Termine sempre com: “Isto é só o esqueleto: a estrutura dos cards, ainda sem a copy final. Quer editar algo ou posso escrever? Digite escreve para seguir.” Aprovar, “escreve” ou pedido equivalente autoriza registrar este mapa e escrever, sem outra pergunta de execução.
 
 Ao receber aprovação explícita:
 

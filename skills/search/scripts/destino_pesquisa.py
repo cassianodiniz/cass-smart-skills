@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Arquiva pesquisas dentro da skill, independentemente do diretório de trabalho."""
+"""Arquiva pesquisas na pasta externa configurada pelo usuário."""
 from __future__ import annotations
 import argparse
 import datetime
@@ -8,6 +8,8 @@ import re
 import sys
 import unicodedata
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "scripts"))
+import smart_config
 
 def slug(texto: str) -> str:
     ascii_text = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode()
@@ -19,22 +21,20 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--data", type=datetime.date.fromisoformat, help="AAAA-MM-DD")
     parser.add_argument("--conferir", action="store_true", help="verifica sem criar arquivos")
     args = parser.parse_args(argv)
-    raiz = Path(__file__).resolve().parent.parent
-    destino = raiz / "pesquisas"
+    destino = None
     try:
-        if destino.is_symlink() or destino.resolve() != destino or (destino.exists() and not destino.is_dir()):
-            raise OSError("pesquisas/ deve ser uma pasta dentro desta skill, sem redirecionamento")
+        destino = smart_config.externo(smart_config.carregar()['pastas']['pesquisas'])
         if args.conferir:
-            base = destino if destino.exists() else raiz
+            base = destino if destino.exists() else destino.parent
             if not os.access(base, os.W_OK | os.X_OK):
-                raise PermissionError("a instalação da skill não permite gravar pesquisas")
+                raise PermissionError("a pasta de pesquisas não permite gravação")
             print(f"pesquisas: {destino} [ok]")
             return 0
-        destino.mkdir(exist_ok=True)
+        destino.mkdir(parents=True, exist_ok=True)
         if not args.tema:
             print(destino)
             return 0
-        data = args.data or datetime.date.today()
+        data = args.data or datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).date()
         nome = f"{slug(args.tema)}-{data.isoformat()}"
         contador = 1
         while True:
@@ -47,7 +47,7 @@ def main(argv: list[str] | None = None) -> int:
         (estudo / "referencias").mkdir()
         print(estudo)
         return 0
-    except OSError as exc:
+    except (OSError, ValueError) as exc:
         print(f"ERRO ao arquivar em {destino}: {exc}. Nenhum outro destino será usado.", file=sys.stderr)
         return 2
 

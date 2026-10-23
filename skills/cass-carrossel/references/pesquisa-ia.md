@@ -4,7 +4,7 @@ Carregue somente quando o mapa provisório contiver alegação externa de IA mar
 
 ## Ordem
 
-1. Se o usuário fornecer uma biblioteca de estudos de IA, consulte os índices e os trechos relevantes.
+1. Siga o roteamento de `pesquisa-e-casos.md` (papers pelo Sider quando disponível; recursos e versões em documentação oficial). Se o usuário fornecer uma biblioteca de estudos de IA, consulte os índices e os trechos relevantes.
 2. Sem biblioteca configurada ou para informação volátil, pesquise fontes primárias pelas ferramentas disponíveis.
 3. Não suponha acesso à biblioteca privada do autor.
 4. Para modelo, preço, recurso, política, benchmark ou versão, confirme em fonte oficial atual mesmo

@@ -1,5 +1,15 @@
 # Alterações
 
+## 0.6.0
+
+- Configuração persistente externa: pastas de posts/pesquisas/vídeo, template Canva, programas e instaladores preservados entre versões; backup e compatibilidade com configuração explícita do projeto.
+- Vídeo com pastas padrão brutos/editados/trabalho/transcrições/aulas; transcrições reutilizáveis fora do cache.
+- Pesquisa salva fora da skill; Sider para papers e search/web para notícias e casos.
+- Carrossel com entrevista, busca opcional de notícias/pessoas, esqueleto aprovado, revisão com subagente e primeira prévia em novo rascunho Canva antes da aprovação final. Modelos sem preenchimento cumprem aprovação de salvamento exigida pelo conector.
+- Template padrão persistente preservado e pergunta de continuidade após ajuste ou aprovação.
+- Runtime Motion conserva HyperFrames 0.7.56 em pasta externa, com wrapper e instalador preservado; preparação também funciona após atualização com configuração intacta.
+- Bloqueio ao iniciar o Codex agora prepara o prompt do subagente sem consumir rodada nem alterar a copy.
+
 ## 0.5.0
 
 - Adicionada cass-carrossel a partir do pacote público https://skills.praxios.com.br/assets/cass-carrossel.skill, preservando seus 49 arquivos sem alterações.

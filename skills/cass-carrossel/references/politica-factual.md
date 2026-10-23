@@ -27,7 +27,7 @@ Fonte antiga continua válida quando conteúdo, população, medida e contexto n
 
 ## Dado `cassiano` que contradiz uma fonte
 
-Se um dado `cassiano` apresentar contradição material de alto risco (número que muda a conclusão do card, causa de morte, acusação), avise **uma vez**, em uma ou duas frases, apontando o card afetado, e espere a decisão. Não transforme o aviso em debate recorrente nem o repita em cada rodada de revisão. Se ele mantiver, registre "mantido por decisão do Cassiano" no `fatos.md` e siga.
+Se um dado `cassiano` apresentar contradição material de alto risco (número que muda a conclusão do card, causa de morte, acusação), avise **uma vez**, em uma ou duas frases, apontando o card afetado, e espere a decisão. Não transforme o aviso em debate recorrente nem o repita em cada rodada de revisão. Se ele mantiver o tema, registre sua decisão em `fatos.md` e siga com formulação sustentada: a preferência editorial não transforma causa de morte, acusação ou número contradito em fato verificado. Mantenha a lacuna visível ou proponha retirar a alegação específica.
 
 ## Grafias propositais
 

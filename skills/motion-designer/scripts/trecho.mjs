@@ -2,6 +2,8 @@ import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
+import { external } from '../../../scripts/runtime_paths.mjs';
+
 function seconds(value) {
   if (!/^\d+(?::\d+){0,2}(?:\.\d+)?$/.test(value ?? '')) return NaN;
   return value.split(':').reverse().reduce((sum, part, i) => sum + Number(part) * 60 ** i, 0);
@@ -17,7 +19,7 @@ try {
   if (!video || !destination || extra.length || !existsSync(video) || !Number.isFinite(a) || !Number.isFinite(b) || b <= a) {
     throw new Error('Uso: node scripts/trecho.mjs <video-existente> <inicio> <fim-maior-que-inicio> <pasta-nova>');
   }
-  const output = path.resolve(destination);
+  const output = external(path.resolve(destination));
   if (existsSync(output)) throw new Error('A pasta de fala já existe; escolha outra para preservar os arquivos.');
   run('ffmpeg', ['-version']);
   run('mlx_whisper', ['--help']);

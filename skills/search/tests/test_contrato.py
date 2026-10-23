@@ -123,8 +123,8 @@ def main() -> int:
 
     # --- 9. destino de gravação é a biblioteca, não pasta relativa (E12) ---
     checa(
-        "9. o destino é pesquisas/ dentro da skill, não ./exa-results/",
-        "exa-results" not in tudo and "pesquisas/" in skill,
+        "9. o destino é externo e configurado, não ./exa-results/",
+        "exa-results" not in tudo and "pastas.pesquisas" in skill,
         "voltou a gravar em pasta relativa ao diretório de trabalho (E12)",
     )
     checa(
@@ -193,7 +193,7 @@ def main() -> int:
     checa("15. o script de destino existe", script.is_file(), "o protetor do caminho sumiu")
     if script.is_file():
         r = subprocess.run([sys.executable, str(script), "--conferir"], capture_output=True, text=True, timeout=30)
-        checa("16. confere sem criar a pasta", r.returncode == 0 and "pesquisas:" in r.stdout,
+        checa("16. confere sem criar a pasta", (r.returncode == 0 and "pesquisas:" in r.stdout) or (r.returncode == 2 and "configurado" in r.stderr),
               f"saiu {r.returncode}: {r.stderr}")
 
     print("-" * 60)

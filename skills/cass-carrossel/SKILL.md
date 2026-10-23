@@ -12,9 +12,16 @@ Cria o post do tema ao Canva pronto, preservando autoria, fatos verificáveis e 
 ## Raiz
 
 Use como raiz de instruções e scripts a pasta deste SKILL.md.
-Guarde o trabalho em `posts-instagram/<slug>/` no projeto do usuário, sem escrever
-nos exemplos da skill. Resolva `scripts/` e `references/` a partir desta skill;
-`posts/<slug>/` nas instruções significa essa pasta de trabalho do usuário.
+Antes de criar um trabalho, leia [configuração persistente](../../CONFIGURACAO.md).
+Reutilize `pastas.posts` da configuração externa; sem configuração, proponha as
+pastas e confirme uma vez. Guarde o trabalho em `<pastas.posts>/<slug>/`, sem
+escrever nos exemplos da skill. Resolva `scripts/` e `references/` a partir desta skill;
+`posts/<slug>/` nas referências significa essa pasta absoluta de trabalho.
+Na entrada, conduza o alinhamento com a skill `ask-me` disponível no plugin, usando
+apenas as perguntas ainda abertas. A resposta pronta da entrevista é o esqueleto
+card a card descrito abaixo; “escreve” é a autorização para executá-lo. Se o pedido
+já autoriza a execução e o esqueleto foi aprovado, não crie outra confirmação.
+Sem ask-me disponível, siga diretamente as rodadas de `estrutura-cards.md`.
 
 ## Configuração desta distribuição
 
@@ -35,10 +42,10 @@ e autenticado. Sua alternativa é o subagente da sessão, conforme escrita-revis
 2. Não invente fatos, fontes, falas, links, métricas ou experiências do Cassiano.
 3. A copy é escrita sempre depois do mapa card a card aprovado, com a âncora de voz. Copy escrita ou alterada pela skill passa pelo revisor GPT 6 Sol (esforço high, via Codex) antes de ser mostrada, no máximo 2 rodadas por versão. Copy declarada final pelo Cassiano é preservada, registrada como aprovada e não chama o revisor; o validador roda nela só como informação, sem bloquear.
 4. Auditoria só quando o Cassiano pedir explicitamente: modo `auditar`, devolve achados e nunca reescreve. Auditar uma versão final dele exige pedido separado. O revisor é sempre o GPT pelo Codex; se ele falhar, a revisão vai para um subagente do modelo da sessão (ver `escrita-revisao.md`); só pare e explique se o subagente também falhar. Nenhum outro modelo entra.
-5. Quem está no post (Cassiano ou Carine) decide depois de ler a versão revisada: aprovar, pedir ajustes ou mandar aos mentores. A skill não julga quem pode decidir; o pedido de passar para o Canva é a decisão final.
+5. Quem está no post (Cassiano ou Carine) decide depois de ler a versão revisada: aprovar, pedir ajustes ou mandar aos mentores. A skill não julga quem pode decidir; o pedido de criar a prévia no Canva não é aprovação final do post.
 6. WhatsApp exige versão e hash exatos, autorização expressa e um único intento de envio. Timeout não autoriza repetição.
 7. Mentores aconselham; não aprovam nem mudam automaticamente a copy.
-8. Canva sempre usa uma cópia do template. Depois da aprovação final, copie, preencha, valide e salve sem gate intermediário.
+8. Canva sempre preserva o template padrão. Depois do esqueleto aprovado e da revisão da copy, crie a primeira prévia em um rascunho novo com link, antes da aprovação final do post. Use a criação por preenchimento quando suportada; qualquer edição/salvamento cumpre as aprovações exigidas pelo conector (`canva.md`).
 9. Persista o estado antes de cada efeito externo.
 10. Pesquisa editorial no Meta só acontece quando Cassiano pedir explicitamente pela fonte. Ela não
     faz parte automática de `gerar`, `incrementar` ou `auditar` e não substitui a pesquisa factual.
@@ -57,6 +64,8 @@ Carregue somente o necessário para a etapa atual:
 | Entender o pedido e propor o mapa card a card antes da copy | [references/estrutura-cards.md](references/estrutura-cards.md) |
 | Criar, migrar ou validar estado | [references/estado.md](references/estado.md) |
 | Definir voz, domínio e rota de pesquisa | [references/perfil-editorial.md](references/perfil-editorial.md) |
+| Pesquisar notícias, pessoas, casos ou escolher search/Sider/web | [references/pesquisa-e-casos.md](references/pesquisa-e-casos.md) |
+| Configurar pastas e recuperar preferências após uma atualização | [Configuração persistente](../../CONFIGURACAO.md) |
 | Verificar os fatos escolhidos para o mapa | [references/politica-factual.md](references/politica-factual.md), depois a rota do domínio |
 | Pedido explícito para procurar posts no Meta ou Instagram | [references/pesquisa-meta.md](references/pesquisa-meta.md) |
 | Escrever ou revisar | [references/escrita-revisao.md](references/escrita-revisao.md) e só as referências de formato indicadas ali |
@@ -76,12 +85,12 @@ criação ou alteração do post.
 
 1. Capture o material e classifique autoria e domínio.
 2. Explique em até 5 linhas o que entendeu; pergunte perfil e formato numa pergunta só, se faltarem, e depois só as lacunas que mudariam o post.
-3. Proponha o mapa card a card com o eixo no cabeçalho; pesquise somente os fatos escolhidos para ele.
-4. Mostre o mapa final e espere a aprovação explícita do Cassiano. Só com o mapa aprovado a copy é escrita — com a âncora de voz — e passa pelo validador determinístico.
+3. Pesquise o necessário para o tema pelas rotas de `pesquisa-e-casos.md`. Ofereça a busca opcional de notícias/pessoas quando útil; use Sider para papers e busca web para notícias. Depois proponha o esqueleto card a card com tese, público e tensão no cabeçalho, fontes e lacunas.
+4. Mostre o esqueleto identificado como estrutura provisória e pergunte: “Quer editar algo ou posso escrever? Digite escreve para seguir.” Espere a aprovação explícita do usuário. Só com o mapa aprovado a copy é escrita — com a âncora de voz — e passa pelo validador determinístico.
 5. GPT 6 Sol high revisa e limpa a versão (se falhar, subagente do modelo da sessão). Revalide; se necessário, faça somente uma segunda rodada corretiva.
-6. Mostre ao Cassiano a copy completa, fontes, lacunas, versão, hash e resultado das validações.
+6. Monte a primeira prévia em novo rascunho do Canva conforme `canva.md` e mostre o link, a copy completa, fontes, lacunas, versão e resultado das validações. Se faltar template, conexão ou operação compatível, entregue a copy local e explique o passo pendente; não invente link salvo.
 7. Quem está no post escolhe: aprovar, editar à mão (no `copy.md` ou no Notion), revisar ou enviar aos mentores. Edição à mão é preservada e não passa pelo revisor, salvo pedido explícito.
-8. Após a decisão final, entregue o artefato pedido; Canva e integrações só entram em suas próprias rotas.
+8. Após ajuste ou aprovação, preserve o que foi aceito, informe o resultado e pergunte o próximo passo apropriado (ajustar, exportar ou entregar). Um pedido explícito de ajuste já autoriza esse ajuste; não repita a autorização. Canva e integrações seguem suas próprias rotas.
 
 Ao fim de cada etapa (mapa aprovado, versão mostrada, pausa, pedido de Canva, publicação), grave no Notion conforme `notion.md`.
 

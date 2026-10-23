@@ -8,6 +8,8 @@ from pathlib import Path
 import platform
 import shutil
 import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "scripts"))
+import smart_config
 
 
 def validar(dados):
@@ -47,10 +49,12 @@ def verificar():
 
 
 def salvar(projeto, origem):
-    projeto = Path(projeto).expanduser().resolve()
+    projeto = smart_config.externo(str(Path(projeto).expanduser().resolve()))
     if not projeto.is_dir():
         raise ValueError('A pasta do projeto não existe; escolha uma pasta existente.')
     dados = validar(json.loads(Path(origem).read_text(encoding='utf-8')))
+    for value in dados['pastas'].values():
+        smart_config.externo(str((projeto / value).resolve()))
     destino = projeto / '.video-maker.json'
     if destino.exists():
         anterior = validar(json.loads(destino.read_text(encoding='utf-8')))
@@ -72,6 +76,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest='acao', required=True)
     sub.add_parser('verificar')
+    load = sub.add_parser('carregar')
+    load.add_argument('--projeto')
     save = sub.add_parser('salvar')
     save.add_argument('--projeto', required=True)
     save.add_argument('--dados', required=True)
@@ -79,6 +85,14 @@ if __name__ == '__main__':
     try:
         if args.acao == 'verificar':
             print(json.dumps(verificar(), ensure_ascii=False, indent=2))
+        elif args.acao == 'carregar':
+            legacy = Path(args.projeto).expanduser().resolve() / '.video-maker.json' if args.projeto else None
+            if legacy and legacy.exists():
+                dados = validar(json.loads(legacy.read_text(encoding='utf-8')))
+                dados['pastas'] = {k: str(smart_config.externo(str((legacy.parent / v).resolve()))) for k,v in dados['pastas'].items()}
+            else:
+                dados = smart_config.video_config()
+            print(json.dumps(dados, ensure_ascii=False, indent=2))
         else:
             print('Configuração salva: ' + str(salvar(args.projeto, args.dados)))
     except (OSError, ValueError, json.JSONDecodeError) as exc:

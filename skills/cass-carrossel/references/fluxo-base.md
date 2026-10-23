@@ -27,11 +27,11 @@ Se o post estiver no Notion, leia a página primeiro e siga `notion.md` (inclusi
 
 Antes de propor a estrutura, mostre em até 5 linhas o que entendeu. Se perfil, formato, tese, público ou tensão já estiverem inequívocos no material do Cassiano, preserve-os e não pergunte de novo. Se algo que mudaria os cards estiver ausente, pergunte somente o que ainda estiver faltando; não repita perguntas já respondidas.
 
-Depois, carregue `estrutura-cards.md`. O portão único antes da copy é a aprovação do mapa card a card, que carrega tese, público e tensão no cabeçalho. Confirmar uma tese em prosa não autoriza a escrita.
+Leia `pesquisa-e-casos.md` para a pesquisa proporcional, incluindo a opção de notícias/pessoas. Depois, carregue `estrutura-cards.md`. O portão único antes da copy é a aprovação do mapa card a card, que carrega tese, público e tensão no cabeçalho. Confirmar uma tese em prosa não autoriza a escrita.
 
 ## 4. Decisão humana depois da revisão
 
-Depois da revisão obrigatória do revisor GPT, quem está no post (Cassiano ou Carine) pode:
+Depois da revisão obrigatória e da primeira prévia em novo rascunho do Canva (`canva.md`), quem está no post (Cassiano ou Carine) pode:
 
 - aprovar a copy;
 - pedir ajustes;
@@ -48,3 +48,5 @@ Mostre cada contribuição com origem e identificador. Quem está no post decide
 Só processe métricas quando Cassiano as fornecer ou pedir análise. Registre hipóteses como hipóteses; nunca transforme desempenho em regra universal com uma única amostra.
 
 A skill nunca deduz uma regra a partir de uma edição do Cassiano na copy — ele pode ter mudado algo só para aquele post. Lição de escrita só entra no acervo quando ele a enuncia explicitamente, com o motivo.
+
+Depois de ajuste ou aprovação, diga o que concluiu e pergunte qual é o próximo passo. Se o pedido já manda executar esse próximo passo, prossiga sem pedir a mesma autorização de novo.

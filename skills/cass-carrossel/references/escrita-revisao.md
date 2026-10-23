@@ -13,7 +13,7 @@ Carregue:
 5. `psicologia-viral-cassiano.md` e `risco-editorial.md` quando forem relevantes;
 6. lições existentes somente do mesmo domínio e formato.
 
-Não carregue referências de Canva, WhatsApp ou Instagram nesta etapa.
+Durante a escrita, não carregue WhatsApp ou Instagram. Concluída a revisão, carregue `canva.md` para montar a prévia em rascunho antes da aprovação final.
 
 ## Ordem obrigatória
 
@@ -25,7 +25,7 @@ Não carregue referências de Canva, WhatsApp ou Instagram nesta etapa.
 6. O GPT devolve a copy completa revisada e um resumo curto das alterações.
 7. Execute o validador novamente.
 8. Se ainda houver erro corrigível, faça uma única segunda rodada do revisor.
-9. Mostre a versão ao Cassiano em `posts/<slug>/copy.md`: informe o caminho e abra o arquivo no editor quando o ambiente permitir. Ele pode editar à mão; quando avisar que salvou, releia o arquivo. O que ele alterou é preservado como está — não reescreva nem passe pelo revisor, salvo pedido explícito dele.
+9. Monte a prévia em um novo rascunho conforme `canva.md`, antes da aprovação final, e mostre o link confirmado. Também mostre a versão ao usuário em `posts/<slug>/copy.md`: informe o caminho e abra o arquivo no editor quando o ambiente permitir. Ele pode editar à mão; quando avisar que salvou, releia o arquivo. O que ele alterou é preservado como está — não reescreva nem passe pelo revisor, salvo pedido explícito dele.
 
 ```powershell
 # revisão (copy escrita pela skill)

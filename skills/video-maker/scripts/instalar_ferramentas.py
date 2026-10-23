@@ -15,6 +15,12 @@ def main():
     if sys.version_info < (3, 10):
         p.error('Use Python 3.10 ou mais novo para preparar as ferramentas.')
     root = Path(a.destino).expanduser().resolve()
+    plugin = Path(__file__).resolve().parents[3]
+    blocked = [Path.home()/'.codex/plugins', Path.home()/'.codex/.tmp', Path.home()/'.agents/skills']
+    if (plugin/'plugin.json').exists():
+        blocked.append(plugin)
+    if any(root == b.resolve() or b.resolve() in root.parents for b in blocked):
+        p.error('Instale as ferramentas fora da pasta do plugin e do cache de skills.')
     if root.exists() and not (root / 'pyvenv.cfg').exists():
         p.error('Escolha uma pasta nova ou um ambiente Video Maker já preparado.')
     venv.EnvBuilder(with_pip=True, symlinks=os.name != 'nt').create(root)

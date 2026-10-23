@@ -3,7 +3,12 @@ name: search
 description: "Use for research where one search falls short — lead generation, literature reviews, deep dives, competitive analysis — and especially whenever numbers, percentages, benchmarks or claims about model behaviour must come back with the page, the date and what they were measured on, since those findings travel badly between models and tasks."
 ---
 
-# Exa Research Orchestrator
+# Research Orchestrator
+
+Source routing comes first: when invoked by carrossel, follow its source choice.
+Use connected Sider Scholar for papers, Exa/web for news and people, and official
+primary sources for product claims. Missing Sider: disclose and use accessible
+primary academic sources. References about Exa apply to the web route only.
 
 You are the orchestrator. Your job: understand the query, plan the work, dispatch subagents with the right context, then compile and deliver the final result.
 
@@ -66,7 +71,7 @@ Note: if the user explicitly asks for something (e.g. "100" of something), conti
 
 ### What subagents do
 
-Subagents run Exa searches and process the results. They keep raw search output out of your context window. Each subagent should:
+Subagents query the assigned source (Sider for papers, Exa/web for news) and process the results. They keep raw search output out of your context window. Each subagent should:
 - Read the reference file(s) you point it to
 - Run the specific searches you assign
 - Return compact, structured output
@@ -86,7 +91,7 @@ Tell each subagent:
 
 **Template:**
 ```
-Read the file at [this skill's directory]/references/searching.md for instructions on how to query Exa effectively.
+For Exa/web tasks, read [this skill's directory]/references/searching.md. For papers, use the available Sider search/read tools and retain the same provenance record.
 
 Then do the following:
 [specific task description]
@@ -143,7 +148,7 @@ These two are not the same number and must never be merged. `results_requested` 
 **Pass the `results_requested` / `pages_opened` instruction lines to every subagent verbatim — don't paraphrase.**
 ### Which reference files to point subagents to
 
-Always point subagents to `references/searching.md`. It contains Exa query guidance and an index of domain-specific pattern files that the subagent will select from based on its task.
+For Exa/web tasks, point subagents to `references/searching.md`. It contains Exa query guidance and an index of domain-specific pattern files that the subagent will select from based on its task.
 
 Point to whichever of these also apply:
 
@@ -244,29 +249,28 @@ This is not a disclaimer and not hedging. It is the same rule as `not stated` ap
 
 ## Where research gets saved
 
-Every research run that cites external sources is archived in `pesquisas/` inside this installed skill directory. Resolve it from the script location, never from the working directory. Keep research outputs private and excluded from Git commits and public packages.
+Before archiving, read [persistent configuration](../../CONFIGURACAO.md). Reuse
+`pastas.pesquisas` in the external user configuration. Missing configuration:
+show the proposed folders and ask the user once. Invalid configuration: report
+the error and preserve it; never silently switch destinations.
 
-**Ask the skill's own script for the destination — do not build the path yourself and do not hardcode it.** It lives beside this file, at `scripts/destino_pesquisa.py`:
+Run `python "<this skill directory>/scripts/destino_pesquisa.py" "<topic>"`.
+The helper resolves the configured external folder regardless of working directory,
+creates a fresh study with `referencias/`, and adds a suffix to preserve earlier
+runs. `--conferir` checks without creating a study. Never archive inside the plugin.
+Dates default to Brasília. Before upgrading an old install, preserve existing
+`skills/search/pesquisas/` externally with user confirmation; do not delete it.
 
-```bash
-python3 "<this skill's directory>/scripts/destino_pesquisa.py" "<research topic>"
-```
-
-It prints one absolute path and has already created it. What it guarantees, so that you don't have to check:
-
-- resolves `pesquisas/` inside this skill on Mac, Windows or Linux;
-- refuses a redirected archive directory and reports write failures without choosing another destination;
-- creates the grouping folder if missing;
-- creates `<topic>-<YYYY-MM-DD>/referencias/`, adds a suffix for repeated runs to preserve existing research, and prints its absolute path.
-
-**If the script exits non-zero, stop and report it.** If the installed skill is read-only, explain that writing inside the skill requires a writable installation; do not select another folder. Do not fall back to a relative folder, do not invent a substitute destination, do not save "somewhere for now". An unsaved research run is a fixable problem; a research run saved where nobody will find it is the problem this replaced.
-
-Run it with `--conferir` to check the library is reachable without creating anything — worth doing before a long research run, so a write-permission problem surfaces before the work, not after.
+For collection, follow the requesting workflow's source choice: Sider Scholar for
+academic papers when available; Exa/web for news and people; official primary
+sources for current product facts. Exa is not mandatory for collecting a paper
+already available through Sider. If Sider is absent, use accessible primary
+academic sources and disclose the fallback. Preserve every provenance rule below.
 
 **The layout it produces:**
 
 ```
-pesquisas/                            ← inside this skill: all research lives here
+<pastas.pesquisas>/                  ← configured outside the plugin
 └── <topic>-<YYYY-MM-DD>/              ← one research run
     ├── estudo.md                      # the synthesis — your reading, your conclusions
     └── referencias/
@@ -284,7 +288,7 @@ pesquisas/                            ← inside this skill: all research lives 
 
 Subagents return provenance records; they do not file them. The `evidence_quote` in each record *is* the `COPIADO DA PÁGINA` block — you are transcribing what you already have, not re-reading anything. If you delegated the search, the filing is still yours: a run where every subagent reported back and nobody archived is a run that will not be findable next month.
 
-The script guarantees the archive path and creates a fresh run directory. Do not write research anywhere else — not to a relative path in the working directory, not outside this skill's `pesquisas/` directory.
+The script guarantees the external archive path and creates a fresh run directory. Do not substitute a relative folder or save inside the installed skill.
 
 **Each source file carries the copied text, not your summary of it:**
 
@@ -309,7 +313,7 @@ Your interpretation does not live in the source file — it lives in `estudo.md`
 
 **This is where the provenance record pays off.** The `evidence_quote` you already captured for every number *is* the copied passage — you are not doing the work twice, you are filing what you already have.
 
-**Before calling the research done:** every source cited in your answer has a file; every number in your answer points to a copied block. Whatever fails that check leaves the answer or becomes a declared gap. Then update `BIBLIOTECA.md` and `INDICE-MESTRE.md` at the `pesquisas/` root in the same pass — an index left stale is material nobody finds again.
+**Before calling the research done:** every source cited in your answer has a file; every number in your answer points to a copied block. Whatever fails that check leaves the answer or becomes a declared gap. Then update `BIBLIOTECA.md` and `INDICE-MESTRE.md` at the configured external research root in the same pass — an index left stale is material nobody finds again.
 
 Do not publish research, rebuild an external reading page or commit generated research automatically. The local Markdown indexes are the catalog. Never overwrite another run's files.
 

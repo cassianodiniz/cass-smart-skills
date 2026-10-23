@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'no
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const skill = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+import { external, hyperframesCli } from '../../../scripts/runtime_paths.mjs';
 function run(command, args) {
   const r = spawnSync(command, args, { encoding: 'utf8', shell: false, maxBuffer: 20 * 1024 * 1024 });
   if (r.error || r.status !== 0) throw new Error(`${command}: ${r.error?.message || r.stderr || r.stdout || 'falhou'}`);
@@ -12,9 +12,8 @@ function run(command, args) {
 try {
   const [destination, ...extra] = process.argv.slice(2);
   if (!destination || extra.length) throw new Error('Uso: node scripts/render.mjs <pasta-do-motion> (após aprovação do MP4)');
-  const project = path.resolve(destination);
-  const cli = path.join(skill, 'node_modules', 'hyperframes', 'dist', 'cli.js');
-  if (!existsSync(cli)) throw new Error('HyperFrames ausente. Na pasta da skill, instale a dependência local: npm install --omit=dev --no-audit --no-fund');
+  const project = external(path.resolve(destination));
+  const cli = hyperframesCli();
   const html = readFileSync(path.join(project, 'index.html'), 'utf8');
   const attr = name => Number(html.match(new RegExp(`\\b${name}=["']([\\d.]+)["']`))?.[1]);
   const expected = { width: attr('data-width'), height: attr('data-height'), duration: attr('data-duration') };

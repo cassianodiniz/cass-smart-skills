@@ -1,6 +1,6 @@
 # Cass Smart Skills
 
-Plugin de skills distribuído pelo GitHub. Versão atual: 0.5.0.
+Plugin de skills distribuído pelo GitHub. Versão atual: 0.6.0.
 
 | Skill | Uso |
 |---|---|
@@ -8,8 +8,8 @@ Plugin de skills distribuído pelo GitHub. Versão atual: 0.5.0.
 | search | Pesquisar com Exa, conferir fontes e guardar pesquisas localmente. |
 | slides-canva | Preparar slides, editar no Canva e criar imagens a partir do material fornecido. |
 | motion-designer | Criar motion graphics mudo que ilustra um trecho de fala (metade de cima de um reel ou tela cheia), com HyperFrames. |
-| video-maker | Editar reels, cortar silêncio ou trechos, montar tela dividida, criar headline e legendas a partir dos arquivos do usuário. |
-| cass-carrossel | Criar, revisar e montar posts de Instagram no Canva, com mapa card a card, referências de estilo e revisão da copy. |
+| video-maker | Editar reels com pastas persistentes de brutos, editados e transcrições, headline e legendas opcionais. |
+| cass-carrossel | Entrevistar, pesquisar, aprovar o esqueleto, revisar e criar prévia em novo rascunho Canva, com template persistente. |
 
 ## Instalação no Codex
 
@@ -36,19 +36,19 @@ Depois de instalar, invoque a skill pelo nome. Exemplos:
 As skills são instruções e arquivos auxiliares. O pacote não instala nem hospeda serviços externos.
 
 - ask-me precisa apenas de um agente capaz de ler skills.
-- motion-designer requer Node.js 22 ou superior, FFmpeg com FFprobe e a dependência local HyperFrames (`npm install --omit=dev --no-audit --no-fund` na pasta da skill). A transcrição opcional usa Whisper MLX local. Prints de telas de app ou de IA são fornecidos pelo usuário.
+- motion-designer requer Node.js 22 ou superior, FFmpeg com FFprobe e o HyperFrames 0.7.56 em ambiente externo (`node <instaladores>/instalar_motion.mjs --destino <ferramentas>/motion-designer`). A transcrição opcional usa Whisper MLX local. Prints de telas de app ou de IA são fornecidos pelo usuário.
 - search requer acesso ao Exa e ferramentas de busca/leitura compatíveis. Configure a conexão `https://mcp.exa.ai/mcp` e autentique pelo fluxo disponível no seu cliente; a disponibilidade de nomes de ferramentas deve ser conferida ali. Os scripts locais requerem Python 3.10 ou superior. Delegação usa os agentes e modelos disponíveis no ambiente; sem agentes, o fluxo deve ser executado diretamente e a limitação informada.
 - slides-canva requer um conector Canva para editar e salvar apresentações e uma ferramenta de geração de imagens para essa parte do trabalho. O usuário fornece modelos, material científico e referências visuais. Chrome é necessário apenas quando solicitado para abrir o resultado.
 - video-maker requer Python 3.10+, FFmpeg/FFprobe, Pillow e NumPy. O pacote inclui um instalador para ambiente isolado e os scripts/fontes da edição; executáveis e modelos são baixados apenas na preparação autorizada. Transcrição local: Whisper large-v3-turbo via MLX em Mac compatível ou faster-whisper em CPU. Motion Designer é opcional para cenas animadas.
 - cass-carrossel usa Python 3.10+ para seus scripts e Codex CLI autenticado para a revisão com GPT 6 Sol high; sem esse revisor, o fluxo prevê subagente da sessão. A edição visual requer conector Canva e template fornecido pelo usuário. Notion, WhatsApp, Instagram e pesquisa dependem das integrações disponíveis e da rota solicitada; sem banco configurado, há registro local.
-- A gravação de pesquisas requer uma instalação local gravável da skill. Ambientes sem arquivos locais ou com cache somente leitura não satisfazem esse requisito.
+- Configurações, mídia, programas e pesquisas ficam fora do plugin, conforme [CONFIGURACAO.md](CONFIGURACAO.md). O cache pode ser somente leitura; as pastas externas precisam permitir gravação.
 
 ## Pesquisas locais
 
 A search resolve o destino pelo local do próprio script, nunca pelo diretório de trabalho:
 
 ```text
-skills/search/pesquisas/
+<pastas.pesquisas>/
   BIBLIOTECA.md
   INDICE-MESTRE.md
   tema-AAAA-MM-DD/
@@ -58,7 +58,11 @@ skills/search/pesquisas/
       fonte.md
 ```
 
-O agente atualiza os índices durante a pesquisa. Execuções com o mesmo tema e data recebem sufixos para preservar resultados anteriores. `pesquisas/` fica fora do Git e dos arquivos gerados por `git archive`. Se a instalação impedir a gravação, a skill informa o problema e não escolhe outro destino. Reinstalar ou limpar o cache do cliente pode remover resultados locais; preserve-os antes dessas operações.
+O agente atualiza os índices durante a pesquisa. Execuções com o mesmo tema e data
+recebem sufixos. A pasta é lida da configuração externa, não da skill instalada.
+Antes de atualizar uma instalação antiga que tinha `skills/search/pesquisas/`,
+preserve os resultados externamente conforme CONFIGURACAO.md; a atualização não
+migra nem apaga pesquisas antigas automaticamente.
 
 ## Motion graphics
 
@@ -107,25 +111,21 @@ com modelos baixados.
 | motion-designer | Há atualizações locais ainda não incorporadas: imagem desde o quadro 0, catálogo de gestos aprovados e biblioteca de interfaces. O runtime Node do plugin é uma adaptação portátil do fluxo local. |
 | video-maker | Adicionada a partir da fonte local atual e dos adaptadores públicos já existentes no Comercial. |
 
-Esta versão adiciona video-maker. As outras quatro skills mantêm o conteúdo da
-versão 0.3.0; as pendências de slides-canva e motion-designer acima continuam abertas.
+A versão 0.4.0 adicionou video-maker. A versão 0.6.0 atualiza pesquisa, carrossel e configuração de vídeo; as pendências de slides-canva e motion-designer acima continuam abertas.
 
 ## Posts de Instagram
 
-A `cass-carrossel` foi incorporada sem alterações a partir do
+A `cass-carrossel` foi incorporada na versão 0.5.0 a partir do
 [pacote público fornecido](https://skills.praxios.com.br/assets/cass-carrossel.skill).
 São 49 arquivos: instruções, referências de estilo e formato, exemplos de posts e
 cinco scripts. O SHA-256 do pacote importado é
 `5ff0d63c9c7b7ded3de90cf4f1bedb04741dcc26782943d709b9978ea8112211`.
 
-A skill propõe o mapa card a card antes da copy, preserva texto final do usuário,
-valida o conteúdo e organiza a revisão. A montagem no Canva usa uma cópia do template
-fornecido pelo usuário. Arquivos de trabalho ficam em `posts-instagram/<slug>/` no
-projeto; contas, banco e destinatários são configurados pelo usuário, conforme as
+Na versão 0.6.0, a skill usa entrevista, pesquisa proporcional e esqueleto aprovado antes da copy, preserva texto final do usuário,
+valida o conteúdo e organiza a revisão. A primeira prévia é um novo rascunho com link, antes da aprovação final, a partir do template padrão persistente. O preenchimento por dados cria um novo design; modelos sem campos exigem edição e a aprovação de salvamento do conector. O template permanece intacto. Arquivos de trabalho ficam em `<pastas.posts>/<slug>/`; contas, banco e destinatários são configurados pelo usuário, conforme as
 instruções do pacote. Exemplos e métricas incluídos são referências do autor.
 
-A inclusão foi validada pela integridade dos arquivos, pelos links internos e pelos
-scripts locais. Integrações externas e revisão real com GPT não foram executadas
+A inclusão inicial foi validada pela integridade dos arquivos, pelos links internos e pelos scripts locais. A versão 0.6.0 adiciona notícias/casos opcionais, Sider para papers e pergunta de continuidade. Veja [CONFIGURACAO.md](CONFIGURACAO.md) para padrões de vídeo, transcrições e instaladores externos. Integrações externas e revisão real com GPT não foram executadas
 nesta publicação.
 
 ## Atualizações
@@ -146,3 +146,5 @@ python3 skills/video-maker/scripts/test_ar_morto.py
 ```
 
 A validação cobre o contrato de fontes, o arquivamento local e regressões da edição: cortes, processamento de transcrição com motor simulado e conferência da fala com áudio sintético. Ela não cobre a motion-designer, que depende de Node, FFmpeg e HyperFrames instalados, nem prova execução real de uma pesquisa Exa, edição Canva ou geração de imagens; esses fluxos dependem dos serviços configurados no cliente.
+
+Detalhes dos testes executados e seus limites: [VALIDACAO.md](VALIDACAO.md).

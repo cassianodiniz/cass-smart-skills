@@ -7,7 +7,7 @@ procure por assunto em `posts-instagram/ideias/`, crie `<slug>.md` com status
 `Ideia` e a fala literal; não desenvolva o post. Para listar/retomar ideias,
 leia esses arquivos. Para um post em trabalho, guarde as três seções abaixo
 em `registro.md` na pasta do post; releia antes de sobrescrever e preserve
-edições manuais. Registre `Pronto` localmente antes do Canva. O fluxo de banco
+edições manuais. Registre `Rascunho` localmente antes da primeira prévia Canva; `Pronto` só após aprovação final. O fluxo de banco
 abaixo só entra quando o usuário fornecer um banco acessível.
 
 
@@ -57,9 +57,9 @@ Próximo passo: <a próxima ação concreta>
 | Status | Quando |
 |---|---|
 | `Ideia` | ideia anotada que ninguém está desenvolvendo |
-| `Rascunho` | post em trabalho, ainda sem copy para decidir |
+| `Rascunho` | post em trabalho, incluindo a criação da primeira prévia Canva |
 | `Pra revisar` | existe uma versão da copy esperando decisão |
-| `Pronto` | alguém pediu para passar para o Canva. Esse pedido é a decisão final, e qualquer um dos dois pode fazê-lo |
+| `Pronto` | o usuário aprovou a versão final do post; criar ou pedir uma prévia no Canva não equivale a essa aprovação |
 | `Enviado` | publicação confirmada. Preencha DATA com o dia |
 
 A skill não decide quem pode aprovar. Ela só registra o que foi decidido. Mandar o post aos mentores não muda o status para `Enviado`.
@@ -73,7 +73,7 @@ Grave sem perguntar. Se a gravação dependesse de alguém lembrar de pedir, a o
   1. mapa aprovado: `Rascunho` e Onde paramos;
   2. versão da copy mostrada: `Pra revisar`, Texto do post, Fontes e Onde paramos;
   3. pausa ou fim da conversa: Onde paramos;
-  4. pedido de Canva: `Pronto`, gravado **antes** da primeira chamada ao Canva (trava 9). Depois do commit, ponha o link da cópia do Canva em Onde paramos;
+  4. primeira prévia Canva: registre `Rascunho` antes da criação e o ID imediatamente após; depois de conferir o design salvo, use `Pra revisar` com o link em Onde paramos. Aprovação final muda para `Pronto`;
   5. publicação confirmada: `Enviado` e DATA.
 - **Primeira gravação de um post:** procure antes pelo TEMA, para não duplicar. Se existir uma linha `Ideia` sobre o assunto, use essa mesma linha. Se não existir, crie a página. Depois, guarde o `notion_page_url`.
 
@@ -102,4 +102,4 @@ Pedidos como "continua o post da Carine sobre X", "meus rascunhos", "o que está
 
 ## Se o Notion falhar
 
-Continue o trabalho localmente e avise numa linha que não salvou no Notion. Tente de novo ao fim da próxima etapa, procurando a página antes de criar, para não duplicar. Se o banco estiver configurado e a gravação de `Pronto` falhar, não chame o Canva: avise e espere. Sem integração configurada, registre `Pronto` localmente antes de chamar o Canva.
+Continue o trabalho localmente e avise numa linha que não salvou no Notion. Tente de novo ao fim da próxima etapa, procurando a página antes de criar, para não duplicar. Persista o estado local antes do efeito externo. Se o Notion estiver indisponível, registre a pendência e continue localmente com a prévia, sem declarar gravação no banco. `Pronto` só após aprovação final.

@@ -19,9 +19,11 @@ Este arquivo é um índice, não uma checklist de leitura. Abra somente o arquiv
 | Escrita e revisão pelo GPT | `escrita-revisao.md` | carregado somente depois do eixo confirmado |
 | Mentores e WhatsApp | `mentores-whatsapp.md` | carregado somente ao enviar ou ler respostas |
 | Link direto do Instagram | `instagram-link.md` | carregado somente quando houver link |
-| Execução no Canva | `canva.md` | carregado somente após aprovação final |
+| Execução no Canva | `canva.md` | carregado após esqueleto aprovado e revisão, para a primeira prévia antes da aprovação final |
 
 Regras que valem sempre:
 - Extrair PRINCÍPIO dos exemplos, nunca colar texto de campeão (não moldar pela métrica).
 - Card único = hipótese com amostra pequena (n=5 é a amostra em que a estrutura foi medida; o acervo de exemplos em `posts-virais/` tem 3 — são contagens diferentes, não erro). Avisar ao usar.
 - A régua de formato é local em `posts-virais/`. Pesquisa factual segue a rota do domínio em `perfil-editorial.md`; uma coisa não substitui a outra.
+
+Para roteamento de Sider/search e a opção de notícias/pessoas, leia `pesquisa-e-casos.md`. Configuração e arquivos permanentes seguem `../../../CONFIGURACAO.md`.

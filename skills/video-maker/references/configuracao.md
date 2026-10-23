@@ -2,9 +2,18 @@
 
 Leia antes da primeira edição. Esta distribuição trabalha apenas com arquivos
 locais: não contém integração com Fotos, iCloud ou banco Notion do autor.
-Procure `.video-maker.json` na pasta do projeto. Sem ele, use o prompt de
-https://skills.praxios.com.br/video-maker ou pergunte a origem dos vídeos e
-proponha pastas de trabalho/entrega. Salve no projeto, sem alterar a skill instalada.
+Leia [a configuração persistente](../../../CONFIGURACAO.md). Rode
+`python scripts/configurar.py carregar` para obter pastas e padrões. A configuração
+central mora fora do plugin e é reutilizada após atualizações. Os padrões são
+`videos/brutos`, `videos/editados`, `videos/trabalho`, `videos/transcricoes` e
+`videos/aulas` sob a base confirmada pelo usuário. Não escolha o primeiro arquivo
+por ordem: liste candidatos e confira nome, conteúdo e duração.
+
+Quando o usuário indicar explicitamente um projeto com `.video-maker.json`, use
+`python scripts/configurar.py carregar --projeto <projeto>`: esse arquivo tem
+precedência e seus caminhos relativos são resolvidos pelo projeto. Arquivo inválido
+é erro; não passe silenciosamente à configuração central. Nunca sobrescreva uma
+configuração anterior só porque a sessão ou o plugin mudou.
 
 ## Salvar e usar
 
@@ -13,7 +22,7 @@ Grave o JSON do prompt em um arquivo temporário e rode, da pasta da skill,
 O script valida os dados e guarda a configuração anterior. Não cria pastas de
 mídia. Caminhos relativos em `pastas` são relativos ao projeto que contém a
 configuração. Crie uma pasta nova por tema em `pastas.trabalho` e guarde nela
-plano, versões, transcrição e conferências. Nunca sobrescreva vídeo existente.
+plano, versões e conferências. Transcrições JSON/MD ficam em `pastas.transcricoes`, com tema/versão e referência para o arquivo de origem; o plano aponta para elas. Nunca sobrescreva vídeo existente.
 
 | Campo | Uso |
 |---|---|
@@ -35,16 +44,18 @@ O pacote leva scripts, fontes e um instalador das ferramentas. Os executáveis
 FFmpeg/FFprobe e os modelos de transcrição são grandes e específicos de cada
 sistema; são baixados no computador do usuário, não embutidos no `.skill`.
 
-Com instalação autorizada, rode Python 3.10+:
-`python scripts/instalar_ferramentas.py --destino <projeto>/.video-maker-tools
---transcricao`. Cria um ambiente isolado, instala Pillow/NumPy e baixa
+Antes, atualize as cópias externas com `preparar-instaladores` de CONFIGURACAO.md (não instala programas nem redefine suas escolhas). Com instalação autorizada, rode Python 3.10+:
+`python <instaladores>/instalar_video.py --destino <ferramentas>/video-maker
+--transcricao`, com os caminhos retornados pela configuração. A cópia do instalador
+fica na pasta externa e versões anteriores são preservadas. O comando também existe
+no pacote em `scripts/instalar_ferramentas.py`, sempre com destino externo. Cria um ambiente isolado, instala Pillow/NumPy e baixa
 FFmpeg/FFprobe via static-ffmpeg; `--transcricao` inclui faster-whisper.
 Não pede senha e não altera o PATH global. Python precisa existir antes; se
 faltar, explique e ofereça instalação conforme as permissões do usuário.
 
 Execute os scripts com o Python desse ambiente:
-- Windows: `<projeto>/.video-maker-tools/Scripts/python.exe`.
-- Mac/Linux: `<projeto>/.video-maker-tools/bin/python`.
+- Windows: `<ferramentas>/video-maker/Scripts/python.exe`.
+- Mac/Linux: `<ferramentas>/video-maker/bin/python`.
 
 Passe `scripts/executar.py <script.py> <argumentos>` a esse Python. O launcher
 põe FFmpeg/FFprobe no PATH somente do processo e carrega os scripts da skill.
@@ -77,3 +88,5 @@ Não substitua o modelo ou envie áudio para serviço externo sem autorização.
 Se uma ferramenta falhar, preserve os arquivos e mostre o erro com a alternativa
 possível. Em áudio, sem escuta direta, a conferência fica pendente e a entrega é
 rascunho. Transcrição ou imagem não comprovam que alguém ouviu a fala.
+
+Depois da versão aprovada ou de um ajuste, informe o resultado e pergunte se o usuário quer ajustar, exportar ou concluir. Um próximo passo já explicitamente pedido deve ser executado sem repetir a mesma autorização.
