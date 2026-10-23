@@ -1,5 +1,12 @@
 # Alterações
 
+## 0.4.0
+
+- Nova skill video-maker: edição de reels com arquivos locais, tela dividida, headline, legendas opcionais, cortes por texto e silêncio, transcrição local e conferência da fala.
+- Reutilizados os adaptadores públicos do Comercial para configuração de pastas e preparação isolada das ferramentas, sem Fotos, iCloud, Notion ou cookies do autor.
+- Incluídos testes de regressão da edição e registrada no README a conferência das quatro skills existentes com as fontes locais.
+- slides-canva e motion-designer têm atualizações locais pendentes, descritas no README; seu conteúdo não mudou nesta versão.
+
 ## 0.3.0
 
 - Removida a skill no-ai-slop.

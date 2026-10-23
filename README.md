@@ -1,6 +1,6 @@
 # Cass Smart Skills
 
-Plugin de skills distribuído pelo GitHub. Versão atual: 0.3.0.
+Plugin de skills distribuído pelo GitHub. Versão atual: 0.4.0.
 
 | Skill | Uso |
 |---|---|
@@ -8,6 +8,7 @@ Plugin de skills distribuído pelo GitHub. Versão atual: 0.3.0.
 | search | Pesquisar com Exa, conferir fontes e guardar pesquisas localmente. |
 | slides-canva | Preparar slides, editar no Canva e criar imagens a partir do material fornecido. |
 | motion-designer | Criar motion graphics mudo que ilustra um trecho de fala (metade de cima de um reel ou tela cheia), com HyperFrames. |
+| video-maker | Editar reels, cortar silêncio ou trechos, montar tela dividida, criar headline e legendas a partir dos arquivos do usuário. |
 
 ## Instalação no Codex
 
@@ -26,6 +27,7 @@ Depois de instalar, invoque a skill pelo nome. Exemplos:
 - “Use search para pesquisar este tema e guardar as fontes.”
 - “Use slides-canva com este texto e o modelo que estou fornecendo.”
 - “Use motion-designer para ilustrar esta fala de 7 segundos.”
+- “Use video-maker para montar um reel com estes vídeos.”
 
 ## Dependências
 
@@ -35,6 +37,7 @@ As skills são instruções e arquivos auxiliares. O pacote não instala nem hos
 - motion-designer requer Node.js 22 ou superior, FFmpeg com FFprobe e a dependência local HyperFrames (`npm install --omit=dev --no-audit --no-fund` na pasta da skill). A transcrição opcional usa Whisper MLX local. Prints de telas de app ou de IA são fornecidos pelo usuário.
 - search requer acesso ao Exa e ferramentas de busca/leitura compatíveis. Configure a conexão `https://mcp.exa.ai/mcp` e autentique pelo fluxo disponível no seu cliente; a disponibilidade de nomes de ferramentas deve ser conferida ali. Os scripts locais requerem Python 3.10 ou superior. Delegação usa os agentes e modelos disponíveis no ambiente; sem agentes, o fluxo deve ser executado diretamente e a limitação informada.
 - slides-canva requer um conector Canva para editar e salvar apresentações e uma ferramenta de geração de imagens para essa parte do trabalho. O usuário fornece modelos, material científico e referências visuais. Chrome é necessário apenas quando solicitado para abrir o resultado.
+- video-maker requer Python 3.10+, FFmpeg/FFprobe, Pillow e NumPy. O pacote inclui um instalador para ambiente isolado e os scripts/fontes da edição; executáveis e modelos são baixados apenas na preparação autorizada. Transcrição local: Whisper large-v3-turbo via MLX em Mac compatível ou faster-whisper em CPU. Motion Designer é opcional para cenas animadas.
 - A gravação de pesquisas requer uma instalação local gravável da skill. Ambientes sem arquivos locais ou com cache somente leitura não satisfazem esse requisito.
 
 ## Pesquisas locais
@@ -72,6 +75,38 @@ O que vem no pacote:
 
 O que não vem: capturas de telas de aplicativos ou de IA. Quando a cena mostra uma tela, a estrutura segue o print que o próprio usuário fornece; sem print daquele app naquele aparelho, a skill pede um em vez de desenhar de memória. Motion acima de 15 s começa por uma cena-piloto para aprovação.
 
+## Edição de vídeo
+
+A video-maker recebe arquivos locais e monta MP4 vertical em 1080×1920. O padrão
+é fala na metade inferior, ilustração na superior e headline inicial; legendas
+dinâmicas entram quando solicitadas. Também permite cortes por texto, remoção de
+silêncio e cortes de aulas longas. Planejamento e versão final passam pela aprovação
+do usuário. A revisão da fala exige escuta; transcrição e quadros não a substituem.
+
+Antes de usar, leia `skills/video-maker/references/configuracao.md`. A configuração
+`.video-maker.json` pertence ao projeto do usuário e define suas pastas e padrões.
+O pacote não integra Fotos, iCloud ou Notion do autor. Não inclui vídeos pessoais,
+cookies nem acesso às suas contas. Trabalho e entrega ficam nas pastas configuradas.
+
+Os comandos são relativos à pasta da skill. Se as ferramentas forem preparadas
+pelo instalador incluído, use o Python do ambiente com `scripts/executar.py`.
+O modelo de transcrição é baixado no primeiro uso e processa o áudio localmente.
+Não foi validada nesta publicação a execução real em Windows/Linux ou a transcrição
+com modelos baixados.
+
+## Conferência com as fontes locais em 23/10/2026
+
+| Skill | Resultado |
+|---|---|
+| ask-me | Idêntica à fonte local. |
+| search | Conteúdo de pesquisa alinhado. Destino local de arquivamento, escolha de agentes e testes foram adaptados para distribuição pública. |
+| slides-canva | Há atualizações locais ainda não incorporadas: receita de escrita por função do slide e fluxo geral de desenhos didáticos. Templates e assets pessoais são adaptações de distribuição, não pendências de sincronização. |
+| motion-designer | Há atualizações locais ainda não incorporadas: imagem desde o quadro 0, catálogo de gestos aprovados e biblioteca de interfaces. O runtime Node do plugin é uma adaptação portátil do fluxo local. |
+| video-maker | Adicionada a partir da fonte local atual e dos adaptadores públicos já existentes no Comercial. |
+
+Esta versão adiciona video-maker. As outras quatro skills mantêm o conteúdo da
+versão 0.3.0; as pendências de slides-canva e motion-designer acima continuam abertas.
+
 ## Atualizações
 
 A publicação de novas versões é manual, somente quando solicitada ao mantenedor. Não há automação de sincronização com as skills pessoais. As versões publicadas neste repositório são adaptadas para uso por outras pessoas.
@@ -85,6 +120,8 @@ Pacote organizado por Cassiano Diniz. A biblioteca padrão Python basta para os 
 ```sh
 python3 skills/search/tests/test_contrato.py
 python3 -m unittest discover -s tests -v
+python3 -m unittest discover -s skills/video-maker/scripts -p 'test_*.py' -v
+python3 skills/video-maker/scripts/test_ar_morto.py
 ```
 
-A validação cobre o contrato de fontes e o arquivamento local. Ela não cobre a motion-designer, que depende de Node, FFmpeg e HyperFrames instalados, nem prova execução real de uma pesquisa Exa, edição Canva ou geração de imagens; esses fluxos dependem dos serviços configurados no cliente.
+A validação cobre o contrato de fontes, o arquivamento local e regressões da edição: cortes, processamento de transcrição com motor simulado e conferência da fala com áudio sintético. Ela não cobre a motion-designer, que depende de Node, FFmpeg e HyperFrames instalados, nem prova execução real de uma pesquisa Exa, edição Canva ou geração de imagens; esses fluxos dependem dos serviços configurados no cliente.

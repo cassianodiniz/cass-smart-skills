@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "cass-smart-skills",
-  "version": "0.3.0",
-  "description": "Skills para entrevista, pesquisa com fontes, slides no Canva e motion graphics explicativo.",
+  "version": "0.4.0",
+  "description": "Skills para entrevista, pesquisa com fontes, slides no Canva, motion graphics e edição de vídeo.",
   "author": {
     "name": "Cassiano Diniz"
   },
@@ -12,14 +12,15 @@
     "skills",
     "research",
     "canva",
-    "motion"
+    "motion",
+    "video"
   ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "Cass Smart Skills",
-        "shortDescription": "Pesquisa, slides e motion",
-        "longDescription": "Quatro skills para alinhar pedidos, pesquisar com fontes, preparar slides no Canva e criar motion graphics que explicam uma fala.",
+        "shortDescription": "Pesquisa, slides e vídeo",
+        "longDescription": "Cinco skills para alinhar pedidos, pesquisar com fontes, preparar slides no Canva, criar motion graphics e editar reels com arquivos locais.",
         "developerName": "Cassiano Diniz",
         "category": "Productivity",
         "defaultPrompt": "Use as skills do Cass Smart Skills para me ajudar com esta tarefa."
