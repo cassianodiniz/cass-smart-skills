@@ -27,7 +27,27 @@ Um portão único: o mapa carrega o eixo no cabeçalho. Não existe aprovação 
 - A skill **pode propor por conta própria** uma linha de hipótese ("fala pública dela em 2022, a verificar") quando percebe uma lacuna que o Cassiano não pediu. Hipótese aparece no mapa como hipótese e nunca entra na copy como fato sem passar pela pesquisa.
 - Não escreva frases finais de copy nesta etapa. O mapa diz o que o card faz, não como ele fala.
 
-Na entrevista, use `pesquisa-e-casos.md` para coletar fontes e, quando escolhido, notícias/pessoas. Depois proponha este esqueleto. Verifique as alegações que forem selecionadas para os cards; se a conferência mudar a arquitetura, destaque a mudança antes da aprovação.
+Após definir o tema de um post novo, execute `pesquisa-e-casos.md` antes deste
+esqueleto: pesquise o assunto e um caso real relacionado, sem outra autorização.
+Com caso verificável, as duas primeiras linhas do mapa são:
+
+| Card | O que entra | Para que serve | Status ou pendência |
+|---|---|---|---|
+| 1 | Nome da pessoa e acontecimento sustentado pela fonte | Apresentar um gancho concreto de reconhecimento/curiosidade | Fonte e limite quando necessários |
+| 2 | Conexão específica entre esse caso e o tema; o que ele ajuda a entender | Fazer a ponte para o conteúdo e motivar a continuação | Distinguir fato e interpretação |
+
+Essas linhas descrevem função e conteúdo, ainda sem copy final. Registre pessoa,
+fonte e justificativa no mapa; demais cards desenvolvem a tese com as evidências.
+O card 2 precisa retomar algo específico do caso: só mencionar o famoso no card 1
+e abandoná-lo no card 2 não realiza a conexão. O objetivo é interesse e retenção;
+não prometa viralização nem invente uma relação para obter cliques.
+Sem caso adequado, apresente a lacuna e a alternativa de `pesquisa-e-casos.md`.
+Pedido explícito de outro formato pelo usuário vale sobre essa abertura padrão.
+Retomada, ajuste pontual e texto final preservam as regras de autoria/atalhos.
+
+Verifique as alegações selecionadas antes de aprovar os cards; se a conferência
+mudar a arquitetura, destaque a mudança antes da aprovação. A seleção do caso é
+proposta junto do mapa; não crie uma aprovação separada só para escolher a pessoa.
 
 ## Gate
 

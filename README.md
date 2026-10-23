@@ -1,6 +1,6 @@
 # Cass Smart Skills
 
-Plugin de skills distribuído pelo GitHub. Versão atual: 0.6.0.
+Plugin de skills distribuído pelo GitHub. Versão atual: 0.7.0.
 
 | Skill | Uso |
 |---|---|
@@ -125,7 +125,7 @@ Na versão 0.6.0, a skill usa entrevista, pesquisa proporcional e esqueleto apro
 valida o conteúdo e organiza a revisão. A primeira prévia é um novo rascunho com link, antes da aprovação final, a partir do template padrão persistente. O preenchimento por dados cria um novo design; modelos sem campos exigem edição e a aprovação de salvamento do conector. O template permanece intacto. Arquivos de trabalho ficam em `<pastas.posts>/<slug>/`; contas, banco e destinatários são configurados pelo usuário, conforme as
 instruções do pacote. Exemplos e métricas incluídos são referências do autor.
 
-A inclusão inicial foi validada pela integridade dos arquivos, pelos links internos e pelos scripts locais. A versão 0.6.0 adiciona notícias/casos opcionais, Sider para papers e pergunta de continuidade. Veja [CONFIGURACAO.md](CONFIGURACAO.md) para padrões de vídeo, transcrições e instaladores externos. Integrações externas e revisão real com GPT não foram executadas
+A inclusão inicial foi validada pela integridade dos arquivos, pelos links internos e pelos scripts locais. A versão 0.7.0 pesquisa o assunto e um caso real antes do esqueleto: card 1 apresenta a pessoa e o fato; card 2 faz a conexão com o tema. A escolha é proposta junto do mapa, mantendo uma só aprovação antes da copy. Sem caso verificável, a lacuna e uma alternativa são apresentadas para decisão. Sider continua sendo a rota de papers. Veja [CONFIGURACAO.md](CONFIGURACAO.md) para padrões de vídeo, transcrições e instaladores externos. Integrações externas e revisão real com GPT não foram executadas
 nesta publicação.
 
 ## Atualizações

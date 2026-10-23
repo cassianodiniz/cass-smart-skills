@@ -27,7 +27,7 @@ Se o post estiver no Notion, leia a página primeiro e siga `notion.md` (inclusi
 
 Antes de propor a estrutura, mostre em até 5 linhas o que entendeu. Se perfil, formato, tese, público ou tensão já estiverem inequívocos no material do Cassiano, preserve-os e não pergunte de novo. Se algo que mudaria os cards estiver ausente, pergunte somente o que ainda estiver faltando; não repita perguntas já respondidas.
 
-Leia `pesquisa-e-casos.md` para a pesquisa proporcional, incluindo a opção de notícias/pessoas. Depois, carregue `estrutura-cards.md`. O portão único antes da copy é a aprovação do mapa card a card, que carrega tese, público e tensão no cabeçalho. Confirmar uma tese em prosa não autoriza a escrita.
+Definido o tema de um post novo, leia `pesquisa-e-casos.md` e execute a pesquisa do assunto e de um caso real antes do mapa, sem autorização de pesquisa separada. Depois, carregue `estrutura-cards.md`: pessoa/fato no card 1, conexão do caso com o assunto no card 2. O portão único antes da copy é a aprovação do mapa card a card, que carrega tese, público e tensão no cabeçalho. Confirmar uma tese em prosa não autoriza a escrita. Retomada ou ajuste pontual preserva o mapa aprovado; texto final do usuário é preservado.
 
 ## 4. Decisão humana depois da revisão
 

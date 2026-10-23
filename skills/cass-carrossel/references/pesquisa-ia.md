@@ -1,6 +1,9 @@
 # Pesquisa para posts de IA
 
-Carregue somente quando o mapa provisório contiver alegação externa de IA marcada para verificação e `dominios_pesquisa` contiver `ia`. Leia primeiro `politica-factual.md` e pesquise apenas as alegações escolhidas para cards.
+Carregue após definir o tema e registrar `dominios_pesquisa` contendo `ia`,
+antes de propor o mapa provisório do post novo. Leia primeiro
+`politica-factual.md` e pesquise as alegações que pretende propor para os cards,
+junto da busca de caso real de `pesquisa-e-casos.md`. Não espere existir mapa.
 
 ## Ordem
 

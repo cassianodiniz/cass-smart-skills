@@ -1,4 +1,28 @@
-# Validação da versão 0.6.0
+# Validação da versão 0.7.0
+
+Alteração em 23/10/2026 (Brasília): pesquisa de tema e caso real antes do
+esqueleto de post novo, pessoa/fato no card 1 e conexão específica no card 2.
+Mapas aprovados, texto final e pedidos explícitos de outro formato são preservados.
+Sem caso verificável, uma alternativa fica visível e depende da aprovação do mapa.
+
+- A versão anterior declarava a busca de pessoas opcional; esta contradição com
+  o pedido fundamentou a correção. Não foi apresentada como falha observada de agente.
+- 16 testes de configuração e fallback passaram com Python 3.13; o Python padrão
+  3.9 estava abaixo do mínimo do instalador. Não houve correção de produto por isso.
+- 21 verificações do contrato de pesquisa passaram.
+- Quatro casos em três contextos novos (12 aplicações textuais): pessoa e ponte,
+  morte sem relação sustentada, falha de acesso a fontes e preservação de texto
+  final/ajustes pontuais. Resultados passaram na B congelada.
+- Revisão independente encontrou dois gatilhos antigos que adiavam a pesquisa
+  até existir mapa. C corrigiu apenas as aberturas das rotas de saúde e IA.
+  Os comportamentos não afetados e testes dos scripts foram reutilizados.
+- A entrada sem mapa em saúde e IA foi aplicada em três novos contextos C
+  (seis ramos simulados), todos seguindo a pesquisa antes da estrutura.
+  O achado foi reconfirmado independentemente como corrigido.
+- Não houve notícia real pesquisada ou gravação no Canva nesta validação;
+  os resultados simulados não provam desempenho de engajamento.
+
+# Histórico: validação da versão 0.6.0
 
 Verificação em 23/10/2026, horário de Brasília. Escopo: configuração externa,
 fluxos carrossel/pesquisa/vídeo e preservação do runtime Motion. A sincronização

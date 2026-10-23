@@ -1,6 +1,8 @@
 # Política factual proporcional
 
-Leia depois do mapa provisório, quando houver alegação externa escolhida para o post. Antes disso, uma leitura superficial para classificar o domínio basta.
+Leia durante a pesquisa do tema/caso, antes do mapa provisório, quando houver
+alegação externa a propor para o post. A captura inicial pode ser superficial;
+o esqueleto de post novo usa a pesquisa de `pesquisa-e-casos.md` já conferida.
 
 ## Regra permanente
 
@@ -19,7 +21,8 @@ Registre em `fatos.md`: identificador, status, formulação permitida no card, o
 
 ## O que verificar, e quanto
 
-Verifique apenas alegações escolhidas para o mapa. Não varra fatos que não vão para o post.
+Verifique as alegações que pretende propor para o mapa, incluindo pessoa/fato do
+card 1 e conexão do card 2. Não varra fatos que não vão para o post.
 
 Checagem reforçada (fonte primária aberta, população, número e limite registrados) é obrigatória para: causalidade de saúde, causa de morte, acusação sobre pessoa real, citação atribuída a alguém, e informação volátil de produto, preço, modelo, recurso, política ou versão.
 

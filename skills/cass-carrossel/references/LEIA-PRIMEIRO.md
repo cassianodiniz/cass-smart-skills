@@ -26,4 +26,4 @@ Regras que valem sempre:
 - Card único = hipótese com amostra pequena (n=5 é a amostra em que a estrutura foi medida; o acervo de exemplos em `posts-virais/` tem 3 — são contagens diferentes, não erro). Avisar ao usar.
 - A régua de formato é local em `posts-virais/`. Pesquisa factual segue a rota do domínio em `perfil-editorial.md`; uma coisa não substitui a outra.
 
-Para roteamento de Sider/search e a opção de notícias/pessoas, leia `pesquisa-e-casos.md`. Configuração e arquivos permanentes seguem `../../../CONFIGURACAO.md`.
+Para roteamento de Sider/search e a pesquisa de assunto e caso real antes do esqueleto, leia `pesquisa-e-casos.md`. Configuração e arquivos permanentes seguem `../../../CONFIGURACAO.md`.
