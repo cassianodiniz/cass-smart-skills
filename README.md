@@ -1,6 +1,6 @@
 # Cass Smart Skills
 
-Plugin de skills distribuído pelo GitHub. Versão atual: 0.4.0.
+Plugin de skills distribuído pelo GitHub. Versão atual: 0.5.0.
 
 | Skill | Uso |
 |---|---|
@@ -9,6 +9,7 @@ Plugin de skills distribuído pelo GitHub. Versão atual: 0.4.0.
 | slides-canva | Preparar slides, editar no Canva e criar imagens a partir do material fornecido. |
 | motion-designer | Criar motion graphics mudo que ilustra um trecho de fala (metade de cima de um reel ou tela cheia), com HyperFrames. |
 | video-maker | Editar reels, cortar silêncio ou trechos, montar tela dividida, criar headline e legendas a partir dos arquivos do usuário. |
+| cass-carrossel | Criar, revisar e montar posts de Instagram no Canva, com mapa card a card, referências de estilo e revisão da copy. |
 
 ## Instalação no Codex
 
@@ -28,6 +29,7 @@ Depois de instalar, invoque a skill pelo nome. Exemplos:
 - “Use slides-canva com este texto e o modelo que estou fornecendo.”
 - “Use motion-designer para ilustrar esta fala de 7 segundos.”
 - “Use video-maker para montar um reel com estes vídeos.”
+- “Use cass-carrossel para criar um carrossel sobre este tema.”
 
 ## Dependências
 
@@ -38,6 +40,7 @@ As skills são instruções e arquivos auxiliares. O pacote não instala nem hos
 - search requer acesso ao Exa e ferramentas de busca/leitura compatíveis. Configure a conexão `https://mcp.exa.ai/mcp` e autentique pelo fluxo disponível no seu cliente; a disponibilidade de nomes de ferramentas deve ser conferida ali. Os scripts locais requerem Python 3.10 ou superior. Delegação usa os agentes e modelos disponíveis no ambiente; sem agentes, o fluxo deve ser executado diretamente e a limitação informada.
 - slides-canva requer um conector Canva para editar e salvar apresentações e uma ferramenta de geração de imagens para essa parte do trabalho. O usuário fornece modelos, material científico e referências visuais. Chrome é necessário apenas quando solicitado para abrir o resultado.
 - video-maker requer Python 3.10+, FFmpeg/FFprobe, Pillow e NumPy. O pacote inclui um instalador para ambiente isolado e os scripts/fontes da edição; executáveis e modelos são baixados apenas na preparação autorizada. Transcrição local: Whisper large-v3-turbo via MLX em Mac compatível ou faster-whisper em CPU. Motion Designer é opcional para cenas animadas.
+- cass-carrossel usa Python 3.10+ para seus scripts e Codex CLI autenticado para a revisão com GPT 6 Sol high; sem esse revisor, o fluxo prevê subagente da sessão. A edição visual requer conector Canva e template fornecido pelo usuário. Notion, WhatsApp, Instagram e pesquisa dependem das integrações disponíveis e da rota solicitada; sem banco configurado, há registro local.
 - A gravação de pesquisas requer uma instalação local gravável da skill. Ambientes sem arquivos locais ou com cache somente leitura não satisfazem esse requisito.
 
 ## Pesquisas locais
@@ -106,6 +109,24 @@ com modelos baixados.
 
 Esta versão adiciona video-maker. As outras quatro skills mantêm o conteúdo da
 versão 0.3.0; as pendências de slides-canva e motion-designer acima continuam abertas.
+
+## Posts de Instagram
+
+A `cass-carrossel` foi incorporada sem alterações a partir do
+[pacote público fornecido](https://skills.praxios.com.br/assets/cass-carrossel.skill).
+São 49 arquivos: instruções, referências de estilo e formato, exemplos de posts e
+cinco scripts. O SHA-256 do pacote importado é
+`5ff0d63c9c7b7ded3de90cf4f1bedb04741dcc26782943d709b9978ea8112211`.
+
+A skill propõe o mapa card a card antes da copy, preserva texto final do usuário,
+valida o conteúdo e organiza a revisão. A montagem no Canva usa uma cópia do template
+fornecido pelo usuário. Arquivos de trabalho ficam em `posts-instagram/<slug>/` no
+projeto; contas, banco e destinatários são configurados pelo usuário, conforme as
+instruções do pacote. Exemplos e métricas incluídos são referências do autor.
+
+A inclusão foi validada pela integridade dos arquivos, pelos links internos e pelos
+scripts locais. Integrações externas e revisão real com GPT não foram executadas
+nesta publicação.
 
 ## Atualizações
 

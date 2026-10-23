@@ -1,5 +1,11 @@
 # Alterações
 
+## 0.5.0
+
+- Adicionada cass-carrossel a partir do pacote público https://skills.praxios.com.br/assets/cass-carrossel.skill, preservando seus 49 arquivos sem alterações.
+- Incluídos o fluxo de mapa card a card, as referências de estilo e posts, o estado por versão e os scripts de validação e revisão da copy.
+- Atualizados os dois manifestos e o README para seis skills, com origem e hash do pacote importado.
+
 ## 0.4.0
 
 - Nova skill video-maker: edição de reels com arquivos locais, tela dividida, headline, legendas opcionais, cortes por texto e silêncio, transcrição local e conferência da fala.
